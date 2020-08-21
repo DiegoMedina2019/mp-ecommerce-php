@@ -1,20 +1,10 @@
 <?php
-    $array = array(
-        "id"=> $_POST['id'],
-        "live_mode"=> $_POST['live_mode'],
-        "type"=> $_POST['type'],
-        "date_created"=> $_POST['date_created'],
-        "application_id"=> $_POST['application_id'],
-        "user_id"=> $_POST['user_id'],
-        "version"=> $_POST['version'],
-        "api_version"=> $_POST['api_version'],
-        "action"=> $_POST['action'],
-        "data" => $_POST['data'],
-    );
-    $json_url = json_encode($array);
+    $json = file_get_contents('php://input');
+
+    $json_url = json_decode($json);
 
     $logFile = fopen("log.txt", 'a') or die("Error creando archivo");
-    fwrite($logFile, "\n\n".date("d/m/Y H:i:s")."JSON_URL: ".$json_url) or die("Error escribiendo en el archivo");
+    fwrite($logFile, "\n\n".date("d/m/Y H:i:s")."JSON_URL: ".print_r( $json_url )) or die("Error escribiendo en el archivo");
     fclose($logFile);
 
     require_once 'vendor/autoload.php';
@@ -36,13 +26,13 @@
     }
     if (isset($payment)) {
         $logFile = fopen("log.txt", 'a') or die("Error creando archivo");
-        fwrite($logFile, "\n".date("d/m/Y H:i:s")."JSON_payment: ".$payment) or die("Error escribiendo en el archivo");
+        fwrite($logFile, "\n".date("d/m/Y H:i:s")."JSON_payment: ".print_r($payment)) or die("Error escribiendo en el archivo");
         fclose($logFile);
     }
     if (isset($plan)){
 
         $logFile = fopen("log.txt", 'a') or die("Error creando archivo");
-        fwrite($logFile, "\n".date("d/m/Y H:i:s")."JSON: ".$plan) or die("Error escribiendo en el archivo");
+        fwrite($logFile, "\n".date("d/m/Y H:i:s")."JSON: ".print_r($plan)) or die("Error escribiendo en el archivo");
         fclose($logFile);
     }
     
