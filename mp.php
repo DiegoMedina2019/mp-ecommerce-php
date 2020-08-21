@@ -28,6 +28,7 @@
     $item->description = "Dispositivo móvil de Tienda e-commerce";
     $item->quantity = 1;
     $item->unit_price = $_POST['price'];
+    $item->picture_url = $_POST['img'];
     $preference->items = array($item);
 
     

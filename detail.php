@@ -134,7 +134,7 @@
                                         </h3>
                                     </div>
                                     <button type="submit" class="mercadopago-button" formmethod="post">
-                                        <a href="<?php echo $preference->sandbox_init_point; ?>">Pagar la Compra</a> 
+                                        <a href="<?php echo $preference->init_point; ?>">Pagar la compra</a> 
                                     </button>
                                 </div>
                             </div>
